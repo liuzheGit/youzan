@@ -7,7 +7,7 @@ import axios from 'axios'
 import '@/assets/css/reset.css'
 import '@/assets/css/common.css'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   router,

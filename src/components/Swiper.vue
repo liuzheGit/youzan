@@ -21,7 +21,7 @@
     },
     mounted(){
       new Swiper('.swiper-container',{
-        autoplay:true,
+        autoplay: true,
         loop:true,
         pagination: {
           el: '.swiper-pagination'
@@ -39,5 +39,5 @@
 
   .swiper-container-horizontal>.swiper-pagination-bullets
     text-align: center
-
+    color: red
 </style>
