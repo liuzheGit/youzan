@@ -50,8 +50,8 @@
       flex-direction: column
       align-items: center
       color: #000
-      /*svg*/
-        /*fill: #000*/
+      &:nth-child(1)
+        color: #FC5959
       &.active svg
         fill: #FC5959
       span

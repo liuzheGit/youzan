@@ -36,8 +36,4 @@
   .swiper-wrapper img
     width: 100%
     height: 100%
-
-  .swiper-container-horizontal>.swiper-pagination-bullets
-    text-align: center
-    color: red
 </style>

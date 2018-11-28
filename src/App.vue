@@ -1,17 +1,11 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <div class="topBanner">
-        <Swiper :lists="myList"/>
-      </div>
-    </div>
     <router-view/>
     <NavBar />
   </div>
 </template>
 <script>
   import axios from 'axios';
-  import Swiper from './components/Swiper'
   import NavBar from './components/NavBar'
   console.log('App页面');
   export default {
@@ -20,7 +14,7 @@
         myList: null,
       }
     },
-    components:{Swiper, NavBar},
+    components:{NavBar},
     created(){
       this.get();
     },
@@ -28,6 +22,7 @@
       get(){
         axios.get('http://rap2api.taobao.org/app/mock/119078/bannerList').then((response)=>{
           this.myList = response.data.list;
+          localStorage.setItem('bannerList', JSON.stringify(response.data.list))
         })
       }
     }
