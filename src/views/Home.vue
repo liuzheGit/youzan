@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
     <Swiper :lists="bannerList" />
     <div class="test">
       <svg class="icon" aria-hidden="true">
