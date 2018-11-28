@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 
+
 import '@/assets/css/reset.css'
 import '@/assets/css/common.css'
 
@@ -13,4 +14,4 @@ new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');

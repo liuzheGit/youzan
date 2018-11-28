@@ -8,6 +8,8 @@
   import axios from 'axios';
   import NavBar from './components/NavBar'
   console.log('App页面');
+  import url from '@/assets/js/url.js'
+
   export default {
     data(){
       return {
@@ -20,7 +22,7 @@
     },
     methods: {
       get(){
-        axios.get('http://rap2api.taobao.org/app/mock/119078/bannerList').then((response)=>{
+        axios.get(url.bannerList).then((response)=>{
           this.myList = response.data.list;
           localStorage.setItem('bannerList', JSON.stringify(response.data.list))
         })
