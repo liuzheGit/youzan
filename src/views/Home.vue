@@ -1,18 +1,47 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
+    <Swiper :lists="bannerList" />
+    <div class="test">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-gouwuche"></use>
+      </svg>
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-rentou"></use>
+      </svg>
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-youzan"></use>
+      </svg>
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-search"></use>
+      </svg>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import Swiper from '@/components/Swiper.vue'
+import axios from 'axios'
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    Swiper
+  },
+  data(){
+    return {
+      bannerList: null
+    }
+  },
+  created(){
+    this.getBannerList();
+  },
+  methods: {
+    getBannerList(){
+      axios.get('http://rap2api.taobao.org/app/mock/119078/bannerList').then((response)=>{
+        this.bannerList = response.data.list;
+      })
+    }
   }
 }
 </script>
