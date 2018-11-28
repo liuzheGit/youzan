@@ -17,7 +17,7 @@
   export default {
     data(){
       return {
-        myList: null
+        myList: null,
       }
     },
     components:{Swiper, NavBar},
