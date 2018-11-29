@@ -19,7 +19,7 @@
     <div class="goodList"
          v-infinite-scroll="loadMore"
          infinite-scroll-disabled="loading"
-         infinite-scroll-distance="10">
+         infinite-scroll-distance="50">
       <div class="goods" v-for="goods in goodsLists" v-bind:id="goods.id">
         <div class="goodsImg">
           <img v-bind:src="goods.img">
@@ -29,6 +29,7 @@
           <span class="goodsPrice">￥{{goods.price}}</span>
         </div>
       </div>
+      <div class="loadingMore" v-show="loading"><span></span></div>
     </div>
   </div>
 </template>
@@ -66,11 +67,15 @@ export default {
     loadMore() {
       this.loading = true;
       if(this.goodsLists.length < 60){
-        axios.get(url.goodsLists).then((response) =>{
-          let currentList = response.data.list;
-          this.goodsLists = this.goodsLists.concat(currentList);
-          this.loading = false;
-        });
+          setTimeout(()=>{
+            axios.get(url.goodsLists).then((response) =>{
+              let currentList = response.data.list;
+              this.goodsLists = this.goodsLists.concat(currentList);
+
+              this.loading = false;
+
+            });
+          },2000);
       }else{
         this.loading = false
       }
@@ -105,4 +110,21 @@ export default {
         justify-content: space-between
         .goodsPrice
           color: red
+    .loadingMore
+      width: 100%
+      padding: 10px 10px
+      vertical-align: middle
+      text-align: center
+      color: #999
+      font-size: 12px
+      line-height: 20px
+      -webkit-box-sizing: border-box
+      box-sizing: border-box
+      >span
+        display: inline-block
+        margin-top: 10px
+        width: 16px
+        height: 16px
+        background: url(https://b.yzcdn.cn/v2/image/loader.gif) no-repeat 50%
+        background-size: 16px 16px
 </style>
