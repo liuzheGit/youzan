@@ -27,8 +27,8 @@
         <div class="goodsDes">
           <span class="goodsName">{{goods.name}}</span>
           <span class="goodsPrice">￥{{goods.price}}</span>
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </template>
@@ -45,8 +45,8 @@ export default {
   data(){
     return {
       myData: null,
-      goodsLists: null,
-      loading: null
+      goodsLists: [],
+      loading: false
     }
   },
   components: {Swiper},
@@ -65,17 +65,16 @@ export default {
     },
     loadMore() {
       this.loading = true;
-      // setTimeout(() => {
-      //   let last = this.list[this.list.length - 1];
-      //   for (let i = 1; i <= 10; i++) {
-      //     this.list.push(last + i);
-      //   }
-      //   this.loading = false;
-      // }, 2500);
-      axios.get(url.goodsLists).then((response) =>{
-        this.goodsLists.concat(response.data.list);
-        this.loading = false;
-      })
+      if(this.goodsLists.length < 60){
+        axios.get(url.goodsLists).then((response) =>{
+          let currentList = response.data.list;
+          this.goodsLists = this.goodsLists.concat(currentList);
+          this.loading = false;
+        });
+      }else{
+        this.loading = false
+      }
+
     }
   }
 }
