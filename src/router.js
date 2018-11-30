@@ -5,6 +5,9 @@ import Search from './views/Search'
 import Car from './views/Car'
 import Person from './views/Person'
 
+// 商品详情页
+import GoodsDetail from './views/GoodsDetail'
+
 Vue.use(Router)
 
 export default new Router({
@@ -28,6 +31,11 @@ export default new Router({
       path: '/Person',
       name: 'person',
       component: Person
+    },
+    {
+      path: '/GoodsDetail/:id',
+      name: 'goodsDetail',
+      component: GoodsDetail
     }
   ]
 })

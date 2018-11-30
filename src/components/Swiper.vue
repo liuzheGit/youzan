@@ -20,13 +20,16 @@
     created(){
     },
     mounted(){
-      new Swiper('.swiper-container',{
-        autoplay: true,
-        loop:true,
-        pagination: {
-          el: '.swiper-pagination'
-        }
+      setTimeout(()=>{
+        new Swiper('.swiper-container',{
+          autoplay: true,
+          loop:true,
+          pagination: {
+            el: '.swiper-pagination'
+          }
+        },100)
       })
+
     }
   }
 </script>
