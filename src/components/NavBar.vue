@@ -5,6 +5,7 @@
       v-bind:id="index"
       v-bind:to="item.name"
       class="li-btn"
+      exact
       >
         <svg class="icon" aria-hidden="true">
           <use v-bind:xlink:href="item.icon"></use>
