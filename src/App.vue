@@ -1,13 +1,12 @@
 <template>
   <div id="app">
     <router-view/>
-    <NavBar />
   </div>
 </template>
 <script>
   import axios from 'axios';
-  import NavBar from './components/NavBar'
-  console.log('App页面');
+
+  // console.log('App页面');
   import url from '@/assets/js/url.js'
 
   export default {
@@ -16,7 +15,7 @@
         myList: null,
       }
     },
-    components:{NavBar},
+    // components:{NavBar},
     created(){
       this.get();
     },

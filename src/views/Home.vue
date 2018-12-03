@@ -20,7 +20,7 @@
          v-infinite-scroll="loadMore"
          infinite-scroll-disabled="loading"
          infinite-scroll-distance="50">
-      <div class="goods" v-for="goods in goodsLists" v-bind:id="goods.id">
+      <router-link :to="{name: 'goodsDetail', params: { id: goods.id }}" class="goods" v-for="goods in goodsLists" v-bind:id="goods.id">
         <div class="goodsImg">
           <img v-bind:src="goods.img">
         </div>
@@ -28,19 +28,21 @@
           <span class="goodsName">{{goods.name}}</span>
           <span class="goodsPrice">￥{{goods.price}}</span>
         </div>
-      </div>
+      </router-link>
       <div class="loadingMore" v-show="loading"><span></span></div>
     </div>
+    <NavBar />
   </div>
 </template>
 
 <script>
-console.log("我会重新加载吗!");
+// console.log("我会重新加载吗!");
 import axios from 'axios';
 import Swiper from '../components/Swiper'
+import NavBar from '../components/NavBar'
 import url from '@/assets/js/url.js'
 
-console.log(url);
+// console.log(url);
 export default {
   name: 'home',
   data(){
@@ -50,12 +52,12 @@ export default {
       loading: false
     }
   },
-  components: {Swiper},
+  components: {Swiper, NavBar},
   created(){
     this.get();
     let list = localStorage.getItem('bannerList');
     this.myData = JSON.parse(list);
-    console.log('这里没次都从localstroage中获取banner')
+    // console.log('这里没次都从localstroage中获取banner')
   },
   methods: {
     get(){
@@ -104,6 +106,7 @@ export default {
     .goods
       flex: 1 1 auto
       background: #eee
+      color: #000
       .goodsDes
         padding: 0 4px
         display: flex

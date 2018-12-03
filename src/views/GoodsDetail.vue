@@ -35,6 +35,9 @@
       <div class="shop-promise">
         <span v-for="(item, index) in identification" v-bind:id="index">{{item}}</span>
       </div>
+      <div class="tabs">
+        <div v-html="description"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -72,7 +75,7 @@
             let data = response.data.data;
             let status = response.data.status;
             if(status === 200){
-              console.log(data);
+              // console.log(data);
               this.description = data.description;
               this.title = data.title;
               this.originalPrice = data.originalPrice;
@@ -91,7 +94,7 @@
             console.log(error)
           })
           .then(()=>{
-            console.log('请求结束')
+            // console.log('请求结束')
           })
       }
     }
@@ -192,4 +195,22 @@
           background-repeat: no-repeat
           background-size: 13px 13px
           margin-right: 2px
+      .tabs
+        padding: 4px
+        width: 100%
+        overflow: paged-x
+        img
+          width: 100% !important
+        .custom-richtext
+          border: 1px solid red
+          & p img
+            width: 100%
+
+  .nav-bar
+    display: none
+</style>
+<style>
+  .custom-richtext img{
+    width: 100%;
+  }
 </style>

@@ -50,10 +50,10 @@
       flex-direction: column
       align-items: center
       color: #000
-      &:nth-child(1)
-        color: #FC5959
-      &.active svg
-        fill: #FC5959
       span
         font-size: 12px
+    .router-link-active
+      color: #FC5959
+      svg
+        fill: #FC5959
 </style>
