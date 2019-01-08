@@ -7,7 +7,6 @@
   import axios from 'axios';
 
   // console.log('App页面');
-  import url from '@/assets/js/url.js'
 
   export default {
     data(){
@@ -21,7 +20,7 @@
     },
     methods: {
       get(){
-        axios.get(url.bannerList).then((response)=>{
+        axios.get(this.$url.bannerList).then((response)=>{
           this.myList = response.data.list;
           localStorage.setItem('bannerList', JSON.stringify(response.data.list))
         })

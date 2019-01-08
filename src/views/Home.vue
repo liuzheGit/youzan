@@ -40,7 +40,6 @@
 import axios from 'axios';
 import Swiper from '../components/Swiper'
 import NavBar from '../components/NavBar'
-import url from '@/assets/js/url.js'
 
 // console.log(url);
 export default {
@@ -61,7 +60,7 @@ export default {
   },
   methods: {
     get(){
-      axios.get(url.goodsLists).then((response) =>{
+      axios.get(this.$url.goodsLists).then((response) =>{
         this.goodsLists = response.data.list;
         console.log(this.goodsLists)
       })
@@ -70,7 +69,7 @@ export default {
       this.loading = true;
       if(this.goodsLists.length < 60){
           setTimeout(()=>{
-            axios.get(url.goodsLists).then((response) =>{
+            axios.get(this.$url.goodsLists).then((response) =>{
               let currentList = response.data.list;
               this.goodsLists = this.goodsLists.concat(currentList);
 

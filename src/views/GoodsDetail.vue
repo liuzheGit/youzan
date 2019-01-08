@@ -45,7 +45,6 @@
 <script>
   import axios from 'axios'
   import Swiper from '../components/Swiper'
-  import url from '@/assets/js/url.js'
   export default {
     name: "Detail",
     data(){
@@ -70,7 +69,7 @@
     },
     methods: {
       getDetail(id){
-        axios.get(url.goodsDetail,{id})
+        axios.get(this.$url.goodsDetail,{id})
           .then((response)=>{
             let data = response.data.data;
             let status = response.data.status;
